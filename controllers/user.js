@@ -4,6 +4,7 @@ const { encrypt, compare } = require("../utils/handlePassword.js");
 const { tokenSign, getUserFromToken } = require("../utils/handleJwt.js");
 const { handleHttpError } = require("../utils/handleError.js");
 const { uploadToPinata } = require("../utils/handleUploadIPFS.js");
+const { sendEmail } = require("../utils/handleEmail.js");
 
 // Crea un nuevo usuario, encripta la contraseña y genera un código de verificación
 const createUser = async (req, res) => {
@@ -15,6 +16,15 @@ const createUser = async (req, res) => {
         const dataUser = await userModel.create(body)
         
         dataUser.set('password', undefined, { strict: false })
+
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: dataUser.email,
+            subject: "Verificación de cuenta",
+            text: `Tu código de verificación es: ${code}`
+        };
+        await sendEmail(mailOptions)
+
         const data = {
             token: tokenSign(dataUser),
             user: dataUser
