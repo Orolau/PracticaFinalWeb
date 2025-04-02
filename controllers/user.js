@@ -260,6 +260,15 @@ const recoverToken = async (req, res) =>{
         req = matchedData(req)
         const code = Math.floor(100000 + Math.random() *900000).toString()
         const user = await userModel.findOneAndUpdate({email: req.email}, {code: code}, { new: true})
+        
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: req.email,
+            subject: "Recuperación de cuenta",
+            text: `Tu código de recuperación es: ${code}`
+        };
+        await sendEmail(mailOptions)
+
         const body ={
             user:{
                 email: user.email,
