@@ -1,0 +1,140 @@
+POST http://localhost:3006/api/user/register
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "pass123QWE"
+}
+
+###
+PUT http://localhost:3006/api/user/validation
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "code": "678490"
+}
+
+###
+POST http://localhost:3006/api/user/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "pass123QWE"
+}
+
+###
+PATCH http://localhost:3006/api/user/register
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "email": "admin@gmail.com",
+    "name" : "laura",
+    "surnames" : "alvarez perez",
+    "nif": "785421693K"
+}
+
+###
+
+PATCH http://localhost:3006/api/user/company?autonomo=true
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "company":{}
+}
+
+###
+PATCH http://localhost:3006/api/user/company?autonomo=false
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "company":{
+        "cif":"741342963L",
+        "name": "u-tad",
+        "street": "Gran Vía",
+        "province": "Pontevedra",
+        "number": 3,
+        "postal": 36885,
+        "city": "Vigo"
+    }
+}
+
+###
+PATCH http://localhost:3006/api/user/address
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "address":{
+        "street": "las rozas",
+        "province": "madrid",
+        "number": 3,
+        "postal": 12345,
+        "city": "madrid"
+    }
+}
+
+###
+
+PATCH http://localhost:3006/api/user/logo
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="bici.jpg"
+Content-Type: image/jpeg
+
+< ./bici.jpg
+--boundary123--
+
+
+###
+GET http://localhost:3006/api/user
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIwNDcsImV4cCI6MTc0MzI0OTI0N30.Q6AEBrlk1kYr3NHvev74ijaXcmy7_Wy4Knw6h3Iueys
+
+###
+DELETE http://localhost:3006/api/user?soft=false
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzJiYjdlZGUwOGIwZjFlYjJiMGUiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDE5MTUsImV4cCI6MTc0MzI0OTExNX0.AE2z0J3Z7QsqOTUbw-22VEJUTiPOYIFojvMNIjyMFQQ
+
+###
+POST http://localhost:3006/api/user/invite
+Content-Type: application/json
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+
+{
+    "email": "laura@gmail.com",
+    "name" : "laura",
+    "surnames" : "perez",
+    "password": "abc123TG"
+}
+
+
+###
+POST http://localhost:3006/api/user/recover
+Content-Type: application/json
+
+{
+    "email":"laura@gmail.com"
+}
+
+###
+POST http://localhost:3006/api/user/validation
+Content-Type: application/json
+
+{
+    "email":"laura@gmail.com",
+    "code":"279017"
+}
+
+###
+PATCH http://localhost:3006/api/user/password
+authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIxMjQsImV4cCI6MTc0MzI0OTMyNH0.QF2CK4UyxjivIf6UiopwH1J9w7eCL60BenWfHHkpDic
+Content-Type: application/json
+
+{
+    "password":"edfT5DD12"
+}
