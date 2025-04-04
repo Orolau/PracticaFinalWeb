@@ -8,10 +8,10 @@ Content-Type: application/json
 ###
 POST http://localhost:3006/api/user/invite
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzc4NjQ5OCwiZXhwIjoxNzQzNzkzNjk4fQ.ffA7J_RJliCbqlvgdRhjxpC0H1nYveUHH3lMjYtfSfM
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzc4OTgwNCwiZXhwIjoxNzQzNzk3MDA0fQ.sqjFJdNYjEZuRMp1aWUI_D0wB2l8WjHZssBddQgZ48o
 
 {
-    "email": "guest@gmail.com",
+    "email": "guest2@gmail.com",
     "name" : "laura",
     "surnames" : "perez",
     "password": "abc123TG"
@@ -19,11 +19,11 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 
 ###
 POST http://localhost:3006/api/client
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMTY1MjAxNjhmMmRkNTNlNjVjNGQiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODc2MDIsImV4cCI6MTc0Mzc5NDgwMn0.68J02OpFGBqaGzGHAU6V3zTIlnD8rQ0J69x-ohI5c6M
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMWYzNmMwYjdlYTQ4YmUyZGZlNzciLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODk4NzksImV4cCI6MTc0Mzc5NzA3OX0.2N1Bmbw6Kkki7qIEdpzscVOZLgEmOEC-6SVtlvYQ-HA
 Content-Type: application/json
 
 {
-    "name": "U-tad",
+    "name": "Cliente2 de admin",
     "cif": "123456789L",
     "address":{
         "street": "Gran Vía",
@@ -49,3 +49,12 @@ Content-Type: application/json
         "city": "Pontevedra"
     }
 }
+
+###
+GET http://localhost:3006/api/client
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMWYzNmMwYjdlYTQ4YmUyZGZlNzciLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODk4NzksImV4cCI6MTc0Mzc5NzA3OX0.2N1Bmbw6Kkki7qIEdpzscVOZLgEmOEC-6SVtlvYQ-HA
+
+
+###
+GET http://localhost:3006/api/client/67f012155860f80af0c55999
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMWYzNmMwYjdlYTQ4YmUyZGZlNzciLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODk4NzksImV4cCI6MTc0Mzc5NzA3OX0.2N1Bmbw6Kkki7qIEdpzscVOZLgEmOEC-6SVtlvYQ-HA
