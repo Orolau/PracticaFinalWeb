@@ -15,6 +15,16 @@ const createClient = async (req, res) =>{
     }
 }
 
+const updateClient = async (req, res) =>{
+    try{
+        const {id} = req.params;
+        req = matchedData(req);
+        const data = await clientModel.findOneAndUpdate({"_id": id}, req, {new:true});
+        res.send(data);
+        
+    }catch(err){
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
 
-
-module.exports = { createClient}
+module.exports = { createClient, updateClient}

@@ -33,3 +33,19 @@ Content-Type: application/json
         "city": "Vigo"
     }
 }
+
+###
+PATCH http://localhost:3006/api/client/67f016780168f2dd53e65c53
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMTY1MjAxNjhmMmRkNTNlNjVjNGQiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODc2MDIsImV4cCI6MTc0Mzc5NDgwMn0.68J02OpFGBqaGzGHAU6V3zTIlnD8rQ0J69x-ohI5c6M
+Content-Type: application/json
+
+{
+    "cif": "123456789L",
+    "address":{
+        "street": "Calle Fuencarral",
+        "province": "Pontevedra",
+        "number": 10,
+        "postal": 36004,
+        "city": "Pontevedra"
+    }
+}
