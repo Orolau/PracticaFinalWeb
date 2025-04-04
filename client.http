@@ -1,0 +1,35 @@
+POST http://localhost:3006/api/user/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "pass123QWE"
+}
+###
+POST http://localhost:3006/api/user/invite
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzc4NjQ5OCwiZXhwIjoxNzQzNzkzNjk4fQ.ffA7J_RJliCbqlvgdRhjxpC0H1nYveUHH3lMjYtfSfM
+
+{
+    "email": "guest@gmail.com",
+    "name" : "laura",
+    "surnames" : "perez",
+    "password": "abc123TG"
+}
+
+###
+POST http://localhost:3006/api/client
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YwMTY1MjAxNjhmMmRkNTNlNjVjNGQiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDM3ODc2MDIsImV4cCI6MTc0Mzc5NDgwMn0.68J02OpFGBqaGzGHAU6V3zTIlnD8rQ0J69x-ohI5c6M
+Content-Type: application/json
+
+{
+    "name": "U-tad",
+    "cif": "123456789L",
+    "address":{
+        "street": "Gran Vía",
+        "province": "Pontevedra",
+        "number": 3,
+        "postal": 36885,
+        "city": "Vigo"
+    }
+}

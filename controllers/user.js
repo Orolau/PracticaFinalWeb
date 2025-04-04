@@ -1,5 +1,5 @@
 const { userModel } = require("../models/index.js");
-const { matchedData, header } = require("express-validator");
+const { matchedData } = require("express-validator");
 const { encrypt, compare } = require("../utils/handlePassword.js");
 const { tokenSign, getUserFromToken } = require("../utils/handleJwt.js");
 const { handleHttpError } = require("../utils/handleError.js");
