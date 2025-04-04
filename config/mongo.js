@@ -1,7 +1,7 @@
 const { default: mongoose } = require('mongoose');
 const mogoose = require ('mongoose');
 const dbConnect = () =>{
-    const db_uri = process.env.DB_URI;
+    const db_uri = process.env.NODE_ENV === 'test' ? process.env.DB_URI_TEST: process.env.DB_URI
     mogoose.set('strictQuery', false)
     try {
         mogoose.connect(db_uri)

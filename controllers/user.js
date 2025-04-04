@@ -212,11 +212,11 @@ const deleteUser = async (req, res) =>{
         }
         if(soft === 'true'){
             await userModel.delete({_id: user._id})
-            res.status(200).send({message: 'User soft deleted succesfully'})
+            res.status(200).send({message: 'User soft deleted successfully'})
         } 
         else{
             await userModel.deleteOne({_id: user._id})
-            res.status(200).send({message: 'User hard deleted succesfully'})
+            res.status(200).send({message: 'User hard deleted successfully'})
         }
     }catch (err){
         handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)

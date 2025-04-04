@@ -140,7 +140,7 @@ const options = {
           }
           
         },
-        userDataWithToken: {
+        code: {
           type: "object",
           required: ["code"],
           properties: {

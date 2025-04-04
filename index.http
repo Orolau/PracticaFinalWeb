@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 PUT http://localhost:3006/api/user/validation
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
 
 {
     "code": "678490"
@@ -27,7 +27,7 @@ Content-Type: application/json
 ###
 PATCH http://localhost:3006/api/user/register
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
 
 {
     "email": "admin@gmail.com",
@@ -40,7 +40,7 @@ authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 
 PATCH http://localhost:3006/api/user/company?autonomo=true
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
 
 {
     "company":{}
@@ -49,7 +49,7 @@ authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 ###
 PATCH http://localhost:3006/api/user/company?autonomo=false
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzYwNzU4MiwiZXhwIjoxNzQzNjE0NzgyfQ.mT01R__Hjq-r9sUJlJm3q-n7jY0AG_rJYt3ORJ1n2fM
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzYwNzU4MiwiZXhwIjoxNzQzNjE0NzgyfQ.mT01R__Hjq-r9sUJlJm3q-n7jY0AG_rJYt3ORJ1n2fM
 
 {
     "company":{
@@ -66,7 +66,7 @@ authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 ###
 PATCH http://localhost:3006/api/user/address
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzYwNzU4MiwiZXhwIjoxNzQzNjE0NzgyfQ.mT01R__Hjq-r9sUJlJm3q-n7jY0AG_rJYt3ORJ1n2fM
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzYwNzU4MiwiZXhwIjoxNzQzNjE0NzgyfQ.mT01R__Hjq-r9sUJlJm3q-n7jY0AG_rJYt3ORJ1n2fM
 
 {
     "address":{
@@ -81,7 +81,7 @@ authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 ###
 
 PATCH http://localhost:3006/api/user/logo
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
 Content-Type: multipart/form-data; boundary=boundary123
 
 --boundary123
@@ -94,16 +94,16 @@ Content-Type: image/jpeg
 
 ###
 GET http://localhost:3006/api/user
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIwNDcsImV4cCI6MTc0MzI0OTI0N30.Q6AEBrlk1kYr3NHvev74ijaXcmy7_Wy4Knw6h3Iueys
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIwNDcsImV4cCI6MTc0MzI0OTI0N30.Q6AEBrlk1kYr3NHvev74ijaXcmy7_Wy4Knw6h3Iueys
 
 ###
 DELETE http://localhost:3006/api/user?soft=false
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzJiYjdlZGUwOGIwZjFlYjJiMGUiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDE5MTUsImV4cCI6MTc0MzI0OTExNX0.AE2z0J3Z7QsqOTUbw-22VEJUTiPOYIFojvMNIjyMFQQ
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzJiYjdlZGUwOGIwZjFlYjJiMGUiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDE5MTUsImV4cCI6MTc0MzI0OTExNX0.AE2z0J3Z7QsqOTUbw-22VEJUTiPOYIFojvMNIjyMFQQ
 
 ###
 POST http://localhost:3006/api/user/invite
 Content-Type: application/json
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzI0MDUwOCwiZXhwIjoxNzQzMjQ3NzA4fQ.lODWti1eJph0pmh0V4P36Mg8B-G0Cip0E68e26XPXww
 
 {
     "email": "laura@gmail.com",
@@ -132,7 +132,7 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:3006/api/user/password
-authoritation: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIxMjQsImV4cCI6MTc0MzI0OTMyNH0.QF2CK4UyxjivIf6UiopwH1J9w7eCL60BenWfHHkpDic
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YzMzZjQwOWU5NDRhMmI1ZjA1M2UiLCJyb2xlIjoiZ3Vlc3QiLCJpYXQiOjE3NDMyNDIxMjQsImV4cCI6MTc0MzI0OTMyNH0.QF2CK4UyxjivIf6UiopwH1J9w7eCL60BenWfHHkpDic
 Content-Type: application/json
 
 {

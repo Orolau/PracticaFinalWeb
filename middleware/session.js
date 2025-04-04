@@ -4,11 +4,11 @@ const {userModel} = require("../models/index.js");
 
 const authMiddleware = async (req, res, next ) =>{
     try{
-        if(!req.headers.authoritation){
+        if(!req.headers.authorization){
             handleHttpError(res, "NOT_TOKEN", 401)
             return
         }
-        const token = req.headers.authoritation.split(' ').pop()
+        const token = req.headers.authorization.split(' ').pop()
         const dataToken = await verifyToken(token)
 
         if(!dataToken._id){

@@ -13,7 +13,7 @@ const app = express();
 morganBody(app, {
     noColors: true,
     skip: function (req, res) {
-        return res.statusCode < 400
+        return res.statusCode < 500
     },
     stream: loggerStream
 })
@@ -29,7 +29,9 @@ app.use("/api", router);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () =>{
-    console.log("Servidor escuchando en el puerto " + port);
+const server = app.listen(port, () =>{
+    //console.log("Servidor escuchando en el puerto " + port);
     dbConnect();
 })
+
+module.exports = {app, server};
