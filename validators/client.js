@@ -1,4 +1,4 @@
-const {check} = require ("express-validator")
+const {check, param} = require ("express-validator")
 const validateResults = require("../utils/handleValidator")
 
 const validatorCreateClient = [
@@ -24,4 +24,10 @@ const validatorUpdateClient = [
     validateResults
 ];
 
-module.exports = {validatorCreateClient, validatorUpdateClient}
+const validateIdParam = [
+    param('id')
+      .exists().withMessage('El parámetro id es requerido')
+      .isMongoId().withMessage('El id debe ser un MongoID válido'),
+  ];
+
+module.exports = {validatorCreateClient, validatorUpdateClient, validateIdParam}

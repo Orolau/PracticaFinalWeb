@@ -23,6 +23,10 @@ const ClientScheme = new mongoose.Schema(
         },
         userId:{
             type: String
+        },
+        deleted:{
+            type: Boolean,
+            default: false
         }
     },
     {

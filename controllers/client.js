@@ -56,5 +56,51 @@ const getClientById = async  (req, res) =>{
     }
 }
 
+const deleteClient = async (req, res) =>{
+    try{
+        const {id} = req.params
+        await clientModel.deleteOne({_id: id})
+        res.status(200).send({message: 'Client deleted successfully'})
+    }catch(err){
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
 
-module.exports = { createClient, updateClient, getClients, getClientById}
+const archiveClient = async (req, res) =>{
+    try{
+        const {id} = req.params
+        await clientModel.delete({_id: id})
+        res.status(200).send({message: 'Client archived successfully'})
+    }catch(err){
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+const getArchivedClients = async (req, res) => {
+    try {
+        
+      const currentUserId = req.user._id;
+      const companyCif = req.user.company?.cif;
+  
+      let userIdsToInclude = [currentUserId];
+      
+      if (companyCif) {
+        const usersInCompany = await userModel.find({ "company.cif": companyCif }, "_id");
+        const ids = usersInCompany.map(user => user._id);
+        userIdsToInclude = [...new Set([...userIdsToInclude, ...ids])];
+      }
+  
+      const archivedClients = await clientModel.findDeleted({
+        userId: { $in: userIdsToInclude }
+      });
+  
+      res.send(archivedClients);
+    } catch (err) {
+        console.log(err)
+      handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500);
+    }
+  };
+  
+
+module.exports = { createClient, updateClient, getClients, getClientById, 
+    deleteClient, archiveClient, getArchivedClients}
