@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middleware/session.js");
-const { createClient, updateClient, getClients, getClientById, deleteClient, archiveClient, getArchivedClients } = require("../controllers/client.js");
+const { createClient, updateClient, getClients, getClientById, deleteClient, archiveClient, getArchivedClients, restoreClient } = require("../controllers/client.js");
 const { validatorCreateClient, validatorUpdateClient, validateIdParam } = require("../validators/client.js");
 const checkDuplicateClientName = require("../middleware/checkDuplicatedClientName.js");
 const checkClientOwnership = require("../middleware/checkClientOwnership.js");
+const checkClientDeletedOwnership = require("../middleware/checkClientDeletedOwnership.js");
 
 router.get('/archive', authMiddleware, getArchivedClients)
+router.patch('/archive/:id', authMiddleware, checkClientDeletedOwnership, restoreClient)
 router.post('/', authMiddleware, validatorCreateClient, checkDuplicateClientName, createClient);
 router.patch('/:id', authMiddleware, validateIdParam, validatorUpdateClient, checkClientOwnership, updateClient);
 router.get('/', authMiddleware, getClients);
