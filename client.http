@@ -60,7 +60,7 @@ GET http://localhost:3006/api/client/67f01f4ac0b7ea48be2dfe7d
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzg2MjEyNCwiZXhwIjoxNzQzODY5MzI0fQ.p9q7NmCAyhgP6psHj5WFtWLF6l57uLXmYiXJmuU68K0
 
 ###
-DELETE http://localhost:3006/api/client/archive/67f01f4ac0b7ea48be2dfe7d
+DELETE http://localhost:3006/api/client/archive/67f012155860f80af0c55999
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzg2MjEyNCwiZXhwIjoxNzQzODY5MzI0fQ.p9q7NmCAyhgP6psHj5WFtWLF6l57uLXmYiXJmuU68K0
 
 

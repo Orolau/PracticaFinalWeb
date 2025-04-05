@@ -426,8 +426,106 @@ const options = {
             }
 
           }
-        }
-        ,
+        },
+        clientData:{
+          type: "object",
+          required: ["name"],
+          properties: {
+            name: {
+              type: "string",
+              example: "U-tad"
+            },
+            cif:{
+              type: "string",
+              example: "123456789L"
+            },
+            address: {
+              type: "object",
+              properties: {
+                street: {
+                  type: "string",
+                  example: "Las Rozas"
+                },
+                province: {
+                  type: "string",
+                  example: "Madrid"
+                },
+                number: {
+                  type: "integer",
+                  example: 3
+                },
+                postal: {
+                  type: "string",
+                  example: "12345"
+                },
+                city: {
+                  type: "string",
+                  example: "Madrid"
+                },
+              }
+            }
+          }
+        },
+        allClientData:{
+          type: "object",
+          required: ["name"],
+          properties: {
+            name: {
+              type: "string",
+              example: "U-tad"
+            },
+            cif:{
+              type: "string",
+              example: "123456789L"
+            },
+            address: {
+              type: "object",
+              properties: {
+                street: {
+                  type: "string",
+                  example: "Las Rozas"
+                },
+                province: {
+                  type: "string",
+                  example: "Madrid"
+                },
+                number: {
+                  type: "integer",
+                  example: 3
+                },
+                postal: {
+                  type: "string",
+                  example: "12345"
+                },
+                city: {
+                  type: "string",
+                  example: "Madrid"
+                },
+              }
+            },
+            _id:{
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            logo:{
+              type: "string",
+              example: "https://inmofotos.es/wp-content/uploads/2021/10/foto-retrato-de-como-hacer-buenas-fotos-a-personas-628x628.jpg"
+            },
+            userId:{
+              type: "string",
+              example: "6661d631b3456d765e39af78"
+            },
+            createdAt:{
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            },
+            updatedAt:{
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            }
+          }
+        },
+        
 
       },
     },
