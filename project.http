@@ -1,0 +1,25 @@
+POST http://localhost:3006/api/user/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "pass123QWE"
+}
+###
+POST http://localhost:3006/api/project
+Content-Type: application/json
+
+{
+  "name": "Nombre del proyecto",
+  "projectCode": "Identificador de proyecto",
+  "email": "mimail@gmail.com",
+  "address": {
+    "street": "Carlos V",
+    "number": 22,
+    "postal": 28936,
+    "city": "Móstoles",
+    "province": "Madrid"
+  },
+  "code": "Código interno del proyecto",
+  "clientId": "67f012155860f80af0c55999"
+}

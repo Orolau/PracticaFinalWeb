@@ -12,20 +12,23 @@ const checkDuplicateClientName = async (req, res, next) => {
     if (clientByUser) {
       return handleHttpError(res, 'CLIENT_EXISTS', 409)
     }
-
+    
     // 2. Buscar usuarios que estén en la misma empresa
-    const companyUsers = await userModel.find({ 'company.cif': userCompanyCIF }, '_id');
-    const companyUserIds = companyUsers.map(user => user._id);
+    if (userCompanyCIF) {
+      const companyUsers = await userModel.find({ 'company.cif': userCompanyCIF }, '_id');
+      const companyUserIds = companyUsers.map(user => user._id);
 
-    // 3. Verificar si algún usuario de la misma empresa tiene ese cliente
-    const clientInCompany = await clientModel.findOne({
-      name,
-      userId: { $in: companyUserIds }
-    });
+      // 3. Verificar si algún usuario de la misma empresa tiene ese cliente
+      const clientInCompany = await clientModel.findOne({
+        name,
+        userId: { $in: companyUserIds }
+      });
 
-    if (clientInCompany) {
+      if (clientInCompany) {
         return handleHttpError(res, 'CLIENT_EXISTS', 409)
+      }
     }
+
 
     // Si pasa ambas verificaciones, continúa
     next();
