@@ -3,11 +3,13 @@ const router = express.Router();
 const authMiddleware = require("../middleware/session.js");
 const checkProjectExistence = require("../middleware/checkProjectExistence.js");
 const { validatorCreateProject, validatorUpdateProject } = require("../validators/project.js");
-const { createProject, updateProject } = require("../controllers/project.js");
+const { createProject, updateProject, getProjects, getProjectById } = require("../controllers/project.js");
 const { validateIdParam } = require("../validators/client.js");
 const checkProjectOwnership = require("../middleware/checkProjectOwnership.js");
 
 router.post('/', authMiddleware, checkProjectExistence, validatorCreateProject, createProject);
-router.put('/:id', authMiddleware, validateIdParam, validatorUpdateProject, checkProjectOwnership, updateProject)
+router.put('/:id', authMiddleware, validateIdParam, validatorUpdateProject, checkProjectOwnership, updateProject);
+router.get('/', authMiddleware, getProjects);
+router.get('/:id', authMiddleware, validateIdParam, checkProjectOwnership, getProjectById);
 
 module.exports = router;

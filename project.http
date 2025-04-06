@@ -8,6 +8,7 @@ Content-Type: application/json
 ###
 POST http://localhost:3006/api/project
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
 
 {
   "name": "Nombre del proyecto",
@@ -23,3 +24,31 @@ Content-Type: application/json
   "code": "Código interno del proyecto",
   "clientId": "67f012155860f80af0c55999"
 }
+
+###
+PUT http://localhost:3006/api/project/67f262a995d26d2d23a20a23
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+
+{
+  "name": "Nombre del proyecto",
+  "projectCode": "Identificador de proyecto",
+  "email": "mimail@gmail.com",
+  "address": {
+    "street": "Carlos V",
+    "number": 22,
+    "postal": 36587,
+    "city": "Vigo",
+    "province": "Pontevedra"
+  },
+  "code": "Código interno del proyecto",
+  "clientId": "67f012155860f80af0c55999"
+}
+
+###
+GET http://localhost:3006/api/project
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+
+###
+GET http://localhost:3006/api/project/67f262a995d26d2d23a20a23
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
