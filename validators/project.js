@@ -15,4 +15,21 @@ const validatorCreateProject = [
     validateResults
 ];
 
-module.exports={validatorCreateProject}
+const validatorUpdateProject = [
+    check("name").exists().withMessage("No name").notEmpty().withMessage("No valid name"),
+    check("projectCode").exists().withMessage("No project code").notEmpty().withMessage("No valid project code"),
+    check("clientId").exists().withMessage("No client id").isMongoId().withMessage("No valid client id"),
+    check("code").optional().isString().withMessage("Code must be a string"),
+    check("address").optional(),
+    check("address.street").optional().isString().withMessage("Street must be a string"),
+    check("address.province").optional().isString().withMessage("Province must be a string"),
+    check("address.city").optional().isString().withMessage("City must be a string"),
+    check("address.number").optional().isInt().withMessage("Number must be a integer"),
+    check("address.postal").optional().isInt().withMessage("Postal must be a integer"),
+    check("begin").optional().isString().withMessage("Begin must be a string"),
+    check("end").optional().isString().withMessage("End must be a string"),
+    check("notes").optional().isString().withMessage("Notes must be a string"),
+    validateResults
+];
+
+module.exports={validatorCreateProject, validatorUpdateProject}

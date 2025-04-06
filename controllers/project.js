@@ -15,4 +15,16 @@ const createProject =  async (req, res) => {
     }
 }
 
-module.exports = {createProject}
+const updateProject =  async (req, res) => {
+    try {
+        const {id} = req.params;
+        req = matchedData(req)
+        const projectData = await projectModel.findOneAndUpdate({ "_id": id }, req, { new: true })
+        res.send(projectData)
+
+    } catch (err) {
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+module.exports = {createProject, updateProject}
