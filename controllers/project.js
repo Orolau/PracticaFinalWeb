@@ -56,4 +56,27 @@ const getProjectById = async (req, res) =>{
     }
 }
 
-module.exports = {createProject, updateProject, getProjects, getProjectById}
+const deleteProject = async (req, res) => {
+    try {
+        const { id } = req.params
+        await projectModel.deleteOne({ _id: id })
+        res.status(200).send({ message: 'Project deleted successfully' })
+    } catch (err) {
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+const archiveProject = async (req, res) => {
+    try {
+        const { id } = req.params
+        await projectModel.delete({ _id: id })
+        res.status(200).send({ message: 'Project archived successfully' })
+    } catch (err) {
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+
+
+module.exports = {createProject, updateProject, getProjects, getProjectById,
+     deleteProject, archiveProject}
