@@ -525,7 +525,128 @@ const options = {
             }
           }
         },
-        
+        projectData:{
+          type: "object",
+          required: ["name", "projectCode", "clientId"],
+          properties: {
+            name: {
+              type: "string",
+              example: "U-tad"
+            },
+            projectCode:{
+              type: "string",
+              example: "YN-0098"
+            },
+            code:{
+              type: "string",
+              example: "0001"
+            },
+            address: {
+              type: "object",
+              properties: {
+                street: {
+                  type: "string",
+                  example: "Las Rozas"
+                },
+                province: {
+                  type: "string",
+                  example: "Madrid"
+                },
+                number: {
+                  type: "integer",
+                  example: 3
+                },
+                postal: {
+                  type: "string",
+                  example: "12345"
+                },
+                city: {
+                  type: "string",
+                  example: "Madrid"
+                },
+              }
+            },
+            clientId:{
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            }
+          }
+        },
+        allProjectData:{
+          type: "object",
+          required: ["name", "projectCode", "clientId", "userId"],
+          properties: {
+            name: {
+              type: "string",
+              example: "U-tad"
+            },
+            projectCode:{
+              type: "string",
+              example: "YN-0098"
+            },
+            code:{
+              type: "string",
+              example: "0001"
+            },
+            address: {
+              type: "object",
+              properties: {
+                street: {
+                  type: "string",
+                  example: "Las Rozas"
+                },
+                province: {
+                  type: "string",
+                  example: "Madrid"
+                },
+                number: {
+                  type: "integer",
+                  example: 3
+                },
+                postal: {
+                  type: "string",
+                  example: "12345"
+                },
+                city: {
+                  type: "string",
+                  example: "Madrid"
+                },
+              }
+            },
+            _id:{
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            userId:{
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            clientId:{
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            begin:{
+              type: "string",
+              example: "2023-06-07"
+            },
+            end:{
+              type: "string",
+              example: "2025-07-17"
+            },
+            notes:{
+              type: "string",
+              example: "XXX XXX XXX"
+            },
+            createdAt:{
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            },
+            updatedAt:{
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            }
+          }
+        }
 
       },
     },
