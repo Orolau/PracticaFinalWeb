@@ -76,7 +76,41 @@ const archiveProject = async (req, res) => {
     }
 }
 
+const getArchivedProjects = async (req, res) => {
+    try {
 
+        const currentUserId = req.user._id;
+        const companyCif = req.user.company?.cif;
+
+        let userIdsToInclude = [currentUserId];
+
+        if (companyCif) {
+            const usersInCompany = await userModel.find({ "company.cif": companyCif }, "_id");
+            const ids = usersInCompany.map(user => user._id);
+            userIdsToInclude = [...new Set([...userIdsToInclude, ...ids])];
+        }
+
+        const archivedProjects = await projectModel.findDeleted({
+            userId: { $in: userIdsToInclude }
+        });
+
+        res.send(archivedProjects);
+    } catch (err) {
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500);
+    }
+};
+
+const restoreProject = async (req, res) => {
+    try {
+      const project= req.project
+  
+      await project.restore();
+  
+      res.status(200).send({ message: 'Project restored successfully' });
+    } catch (err) {
+      handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500);
+    }
+  };
 
 module.exports = {createProject, updateProject, getProjects, getProjectById,
-     deleteProject, archiveProject}
+     deleteProject, archiveProject, getArchivedProjects, restoreProject}

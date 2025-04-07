@@ -8,11 +8,11 @@ Content-Type: application/json
 ###
 POST http://localhost:3006/api/project
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
 
 {
-  "name": "Nombre del proyecto",
-  "projectCode": "Identificador de proyecto",
+  "name": "Proyecto3",
+  "projectCode": "003",
   "email": "mimail@gmail.com",
   "address": {
     "street": "Carlos V",
@@ -21,7 +21,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
     "city": "Móstoles",
     "province": "Madrid"
   },
-  "code": "Código interno del proyecto",
+  "code": "3",
   "clientId": "67f012155860f80af0c55999"
 }
 
@@ -47,17 +47,24 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 
 ###
 GET http://localhost:3006/api/project
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
 
 ###
-GET http://localhost:3006/api/project/67f262a995d26d2d23a20a23
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+GET http://localhost:3006/api/project/67f3ca25580c6b843c2ae0da
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
 
 ###
-DELETE http://localhost:3006/api/project/67f262a995d26d2d23a20a23
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+DELETE http://localhost:3006/api/project/67f3ca25580c6b843c2ae0da
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
 
 ###
-DELETE http://localhost:3006/api/project/archive/67f28869fe7404c0c057dd07
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk0Njg4MCwiZXhwIjoxNzQzOTU0MDgwfQ.QEEq_qobZVUHxJ5PEmUff_jD6KhGRqgu_L6dCqAsBmQ
+DELETE http://localhost:3006/api/project/archive/67f3ca25580c6b843c2ae0da
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
 
+###
+GET http://localhost:3006/api/project/archive
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
+
+###
+PATCH  http://localhost:3006/api/project/archive/67f3ca25580c6b843c2ae0da
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDAzMDIxOSwiZXhwIjoxNzQ0MDM3NDE5fQ.rs57tQITE3s6YvtGdoSkIAys5fQsdB_X-iy65_z1DrE
