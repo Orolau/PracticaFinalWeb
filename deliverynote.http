@@ -1,0 +1,22 @@
+POST http://localhost:3006/api/user/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "pass123QWE"
+}
+
+###
+POST http://localhost:3006/api/deliverynote
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDEzMTY3MCwiZXhwIjoxNzQ0MTM4ODcwfQ.kvb-tlI8_6vt92dwQ0T7YMYNJmowh-IMLDYVH7JD_50
+Content-Type: application/json
+
+{
+  "clientId": "67f012155860f80af0c55999",
+  "projectId": "67f28869fe7404c0c057dd07",
+  "format": "hours",
+  "material": "type of material",
+  "hours": ["8","2","56"],
+  "description": "my description",
+  "workdate": "2/5/2025"
+}
