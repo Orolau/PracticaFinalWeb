@@ -42,6 +42,8 @@ const getDeliverynotes = async (req, res) =>{
         
             userIds = usersInCompany.map((u) => u._id);
         }
+        
+
 
         const deliverynotes = await deliverynoteModel.find({ userId: { $in: userIds } })
         res.send(deliverynotes)
@@ -50,4 +52,19 @@ const getDeliverynotes = async (req, res) =>{
     }
 }
 
-module.exports = {createDeliverynote, getDeliverynotes}
+const getDeliverynoteById = async (req, res) =>{
+    try{
+        const {id} = req.params
+        const deliverynote = await deliverynoteModel.findById(id)
+            .populate("userId")
+            .populate("clientId")
+            .populate("projectId");
+
+        res.send(deliverynote)
+
+    }catch(err){
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById}

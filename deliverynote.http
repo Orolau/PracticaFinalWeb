@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
   "clientId": "67f012155860f80af0c55999",
-  "projectId": "67f28869fe7404c0c057dd07",
+  "projectId": "67f3ca25580c6b843c2ae0da",
   "format": "hours",
   "material": "type of material",
   "hours": ["8","2","56"],
@@ -27,4 +27,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 
 ###
 GET http://localhost:3006/api/deliverynote?company=true
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDEzMTY3MCwiZXhwIjoxNzQ0MTM4ODcwfQ.kvb-tlI8_6vt92dwQ0T7YMYNJmowh-IMLDYVH7JD_50
+
+###
+GET http://localhost:3006/api/deliverynote/67f564bdc5911f594d2dcf2d
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDEzMTY3MCwiZXhwIjoxNzQ0MTM4ODcwfQ.kvb-tlI8_6vt92dwQ0T7YMYNJmowh-IMLDYVH7JD_50

@@ -58,4 +58,4 @@ const ProjectScheme = new mongoose.Schema(
 )
 
 ProjectScheme.plugin(mongooseDelete, {overrideMethods: "all"})
-module.exports = mongoose.model("projectModel", ProjectScheme)
+module.exports = mongoose.model("projectModel", ProjectScheme);
