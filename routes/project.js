@@ -63,7 +63,7 @@ router.post('/', authMiddleware, checkProjectExistence, validatorCreateProject, 
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: "#/components/schemas/projectData"
+ *                      $ref: "#/components/schemas/allProjectData"
  *      responses:
  *          '200':
  *              description: Project updated successfully
