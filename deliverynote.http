@@ -20,3 +20,11 @@ Content-Type: application/json
   "description": "my description",
   "workdate": "2/5/2025"
 }
+
+###
+GET http://localhost:3006/api/deliverynote?company=false
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDEzMTY3MCwiZXhwIjoxNzQ0MTM4ODcwfQ.kvb-tlI8_6vt92dwQ0T7YMYNJmowh-IMLDYVH7JD_50
+
+###
+GET http://localhost:3006/api/deliverynote?company=true
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDEzMTY3MCwiZXhwIjoxNzQ0MTM4ODcwfQ.kvb-tlI8_6vt92dwQ0T7YMYNJmowh-IMLDYVH7JD_50

@@ -24,9 +24,30 @@ const createDeliverynote = async (req, res) => {
         res.send(deliverynote)
 
     } catch (err) {
-        console.log(err)
         handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
     }
 }
 
-module.exports = {createDeliverynote}
+const getDeliverynotes = async (req, res) =>{
+    try{
+        const {company} = req.query
+        const user = req.user
+        let userIds = [user._id]
+
+        if (company === 'true'){
+            const usersInCompany = await userModel.find(
+                { "company.cif": user.company.cif },
+                "_id"
+              );
+        
+            userIds = usersInCompany.map((u) => u._id);
+        }
+
+        const deliverynotes = await deliverynoteModel.find({ userId: { $in: userIds } })
+        res.send(deliverynotes)
+    }catch (err){
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+module.exports = {createDeliverynote, getDeliverynotes}
