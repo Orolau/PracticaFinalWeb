@@ -6,6 +6,7 @@ const checkProjectExistence = async (req, res, next) => {
         const { name, projectCode } = req.body;
         const userId = req.user._id.toString();
         const companyCif = req.user.company?.cif;
+        const currentProjectId = req.params.id; // <-- ID del proyecto que se está actualizando
 
         // 1. Buscar proyectos que tengan el mismo nombre o código
         const existingProjects = await projectModel.find({
@@ -15,23 +16,27 @@ const checkProjectExistence = async (req, res, next) => {
             ]
         });
 
-        // Si no hay proyectos con conflictos, continuar
-        if (existingProjects.length === 0) {
+        // 2. Filtrar proyectos que sean distintos al que se está actualizando
+        const conflictingProjects = existingProjects.filter(
+            project => project._id.toString() !== currentProjectId
+        );
+
+        // Si no hay conflictos (todos eran el mismo proyecto), continuar
+        if (conflictingProjects.length === 0) {
             return next();
         }
 
-        // 2. Verificar si alguno pertenece al usuario actual
-        const userConflict = existingProjects.find(
+        // 3. Verificar si alguno pertenece al usuario actual
+        const userConflict = conflictingProjects.find(
             project => project.userId.toString() === userId
         );
 
         if (userConflict) {
-            return handleHttpError(res, "PROJECT_EXIST", 409)
+            return handleHttpError(res, "PROJECT_EXIST", 409);
         }
 
-        // 3. Si el usuario tiene compañía, comprobar si algún otro usuario de su compañía tiene el proyecto
+        // 4. Verificar si hay conflicto con usuarios de la misma compañía
         if (companyCif) {
-            // Buscar todos los usuarios que tienen la misma compañía
             const usersInCompany = await userModel.find(
                 { "company.cif": companyCif },
                 "_id"
@@ -39,20 +44,19 @@ const checkProjectExistence = async (req, res, next) => {
 
             const userIdsInCompany = usersInCompany.map(user => user._id.toString());
 
-            const companyConflict = existingProjects.find(
+            const companyConflict = conflictingProjects.find(
                 project => userIdsInCompany.includes(project.userId.toString())
             );
 
             if (companyConflict) {
-                return handleHttpError(res, "PROJECT_EXIST", 409)
+                return handleHttpError(res, "PROJECT_EXIST", 409);
             }
         }
 
-        // Si no hay conflicto, continuar
         next();
 
     } catch (err) {
-        handleHttpError(res, "INTERNAL_SERVER_ERROR", 500)
+        handleHttpError(res, "INTERNAL_SERVER_ERROR", 500);
     }
 };
 

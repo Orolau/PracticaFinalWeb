@@ -85,7 +85,7 @@ router.post('/', authMiddleware, checkProjectExistence, validatorCreateProject, 
  *              description: Internal Server Error
  */
 
-router.put('/:id', authMiddleware, validateIdParam, validatorUpdateProject, checkProjectOwnership, updateProject);
+router.put('/:id', authMiddleware, validateIdParam, validatorUpdateProject, checkProjectOwnership, checkProjectExistence, updateProject);
 /**
  * @openapi
  * /api/project:
