@@ -7,7 +7,7 @@ const validatorCreateDeliveryNote = [
   check("description").exists().withMessage("description is required").isString().withMessage("Description must be a string"),
   check("workdate").optional().isString().withMessage("workdate must be a string"),
   check("format").optional().isIn(["hours", "material"]).withMessage("format must be 'hours' or 'material'"),
-  check("material").optional(),
+  check("materials").optional(),
   check("hours").optional(),
 
   validateResults,

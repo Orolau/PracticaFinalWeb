@@ -3,9 +3,7 @@ const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError.js");
 const { getDeliverynotePdf } = require('../utils/createDeliveryNotePDF.js');
 const descargarPDFDesdeIPFS = require('../utils/descargarPDFdeIPFS.js');
-const path = require('path');
-const util = require('util');
-const fs = require('fs');
+
 
 
 const createDeliverynote = async (req, res) => {
