@@ -144,12 +144,14 @@ const getDeliverynotePdf = async (req, res) => {
       { pdf: ipfsURL },
       { new: true }
     );
-    
+
   } catch (err) {
     console.error(err);
     handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500);
   }
 };
+
+
 
 module.exports = {
   getDeliverynotePdf

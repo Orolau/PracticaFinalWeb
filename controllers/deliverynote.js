@@ -49,8 +49,6 @@ const getDeliverynotes = async (req, res) =>{
             userIds = usersInCompany.map((u) => u._id);
         }
         
-
-
         const deliverynotes = await deliverynoteModel.find({ userId: { $in: userIds } })
         res.send(deliverynotes)
     }catch (err){
@@ -94,7 +92,7 @@ const signDeliveryNote = async (req, res) =>{
             const ipfsFile = pinataResponse.IpfsHash;
             const ipfs = `https://${process.env.PINATA_GATEWAY}/ipfs/${ipfsFile}`;
     
-            const deliverynote = await deliverynoteModel.findOneAndUpdate({_id: id}, {sign:ipfs}, { new: true})
+            await deliverynoteModel.findOneAndUpdate({_id: id}, {sign:ipfs}, { new: true})
             await getDeliverynotePdf(req, res)
             
             res.send(req.deliverynote)
@@ -104,4 +102,19 @@ const signDeliveryNote = async (req, res) =>{
         }
 }
 
-module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById, getDeliverynotePDF, signDeliveryNote}
+const deleteDeliverynote =  async (req, res) => {
+    try {
+        const { id } = req.params
+        if(!req.deliverynote.sign || req.deliverynote.sign === ""){
+            await deliverynoteModel.deleteOne({ _id: id })
+            res.status(200).send({ message: 'Delivery note deleted successfully' })
+        }else{
+            handleHttpError(res, 'DELIVERY_NOTE_SIGNED', 405)
+        }
+        
+    } catch (err) {
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById, getDeliverynotePDF, signDeliveryNote, deleteDeliverynote}

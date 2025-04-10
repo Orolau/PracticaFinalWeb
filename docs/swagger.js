@@ -1,4 +1,5 @@
-const swaggerJsdoc = require("swagger-jsdoc")
+const swaggerJsdoc = require("swagger-jsdoc");
+const deliverynote = require("../models/deliverynote");
 
 const options = {
   definition: {
@@ -53,30 +54,30 @@ const options = {
             },
           },
         },
-        email:{
+        email: {
           type: "object",
           required: ["email"],
-          properties:{
+          properties: {
             email: {
               type: "string",
               example: "miemail@google.com"
             },
           }
         },
-        password:{
+        password: {
           type: "object",
           required: ["password"],
-          properties:{
+          properties: {
             password: {
               type: "string",
               example: "newPassword123"
             },
           }
         },
-        validateCode:{
+        validateCode: {
           type: "object",
           required: ["email", "code"],
-          properties:{
+          properties: {
             email: {
               type: "string",
               example: "miemail@google.com"
@@ -112,39 +113,39 @@ const options = {
         userData: {
           type: "object",
           properties: {
-              token:{
-                type: "string",
-                example: "eyJhbGciOiJIUzI1NiIsIn..."
-              },
-              user: {
-                type: "object",
-                properties: {
-                  name: {
-                    type: "string",
-                    example: "Menganito"
-                  },
-                  _id: {
-                    type: "string",
-                    example: "67e7bd3cca24ba8647af227d"
-                  },
-                  email: {
-                    type: "string",
-                    example: "miemail@google.com"
-                  },
-                  role: {
-                    type: "string",
-                    example: "user"
-                  },
+            token: {
+              type: "string",
+              example: "eyJhbGciOiJIUzI1NiIsIn..."
+            },
+            user: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string",
+                  example: "Menganito"
                 },
-              }
+                _id: {
+                  type: "string",
+                  example: "67e7bd3cca24ba8647af227d"
+                },
+                email: {
+                  type: "string",
+                  example: "miemail@google.com"
+                },
+                role: {
+                  type: "string",
+                  example: "user"
+                },
+              },
+            }
           }
-          
+
         },
         code: {
           type: "object",
           required: ["code"],
           properties: {
-            code:{
+            code: {
               type: "string",
               example: "000000"
             }
@@ -153,33 +154,33 @@ const options = {
         userDataWithToken: {
           type: "object",
           properties: {
-              token:{
-                type: "string",
-                example: "eyJhbGciOiJIUzI1NiIsIn..."
-              },
-              user: {
-                type: "object",
-                properties: {
-                  status: {
-                    type: "integer",
-                    example: 1
-                  },
-                  _id: {
-                    type: "string",
-                    example: "67e7bd3cca24ba8647af227d"
-                  },
-                  email: {
-                    type: "string",
-                    example: "miemail@google.com"
-                  },
-                  role: {
-                    type: "string",
-                    example: "user"
-                  },
+            token: {
+              type: "string",
+              example: "eyJhbGciOiJIUzI1NiIsIn..."
+            },
+            user: {
+              type: "object",
+              properties: {
+                status: {
+                  type: "integer",
+                  example: 1
                 },
-              }
+                _id: {
+                  type: "string",
+                  example: "67e7bd3cca24ba8647af227d"
+                },
+                email: {
+                  type: "string",
+                  example: "miemail@google.com"
+                },
+                role: {
+                  type: "string",
+                  example: "user"
+                },
+              },
+            }
           }
-          
+
         },
         personalDataUser: {
           type: "object",
@@ -427,7 +428,7 @@ const options = {
 
           }
         },
-        clientData:{
+        clientData: {
           type: "object",
           required: ["name"],
           properties: {
@@ -435,7 +436,7 @@ const options = {
               type: "string",
               example: "U-tad"
             },
-            cif:{
+            cif: {
               type: "string",
               example: "123456789L"
             },
@@ -466,7 +467,7 @@ const options = {
             }
           }
         },
-        allClientData:{
+        allClientData: {
           type: "object",
           required: ["name"],
           properties: {
@@ -474,7 +475,7 @@ const options = {
               type: "string",
               example: "U-tad"
             },
-            cif:{
+            cif: {
               type: "string",
               example: "123456789L"
             },
@@ -503,29 +504,29 @@ const options = {
                 },
               }
             },
-            _id:{
+            _id: {
               type: "string",
               example: "6662a8c3c199795c88329e4e"
             },
-            logo:{
+            logo: {
               type: "string",
               example: "https://inmofotos.es/wp-content/uploads/2021/10/foto-retrato-de-como-hacer-buenas-fotos-a-personas-628x628.jpg"
             },
-            userId:{
+            userId: {
               type: "string",
               example: "6661d631b3456d765e39af78"
             },
-            createdAt:{
+            createdAt: {
               type: "string",
               example: "2024-06-07T06:29:23.473Z"
             },
-            updatedAt:{
+            updatedAt: {
               type: "string",
               example: "2024-06-07T06:29:23.473Z"
             }
           }
         },
-        projectData:{
+        projectData: {
           type: "object",
           required: ["name", "projectCode", "clientId"],
           properties: {
@@ -533,11 +534,11 @@ const options = {
               type: "string",
               example: "U-tad"
             },
-            projectCode:{
+            projectCode: {
               type: "string",
               example: "YN-0098"
             },
-            code:{
+            code: {
               type: "string",
               example: "0001"
             },
@@ -566,13 +567,13 @@ const options = {
                 },
               }
             },
-            clientId:{
+            clientId: {
               type: "string",
               example: "6662a8c3c199795c88329e4e"
             }
           }
         },
-        allProjectData:{
+        allProjectData: {
           type: "object",
           required: ["name", "projectCode", "clientId", "userId"],
           properties: {
@@ -580,11 +581,11 @@ const options = {
               type: "string",
               example: "U-tad"
             },
-            projectCode:{
+            projectCode: {
               type: "string",
               example: "YN-0098"
             },
-            code:{
+            code: {
               type: "string",
               example: "0001"
             },
@@ -613,43 +614,138 @@ const options = {
                 },
               }
             },
-            _id:{
+            _id: {
               type: "string",
               example: "6662a8c3c199795c88329e4e"
             },
-            userId:{
+            userId: {
               type: "string",
               example: "6662a8c3c199795c88329e4e"
             },
-            clientId:{
+            clientId: {
               type: "string",
               example: "6662a8c3c199795c88329e4e"
             },
-            begin:{
+            begin: {
               type: "string",
               example: "2023-06-07"
             },
-            end:{
+            end: {
               type: "string",
               example: "2025-07-17"
             },
-            notes:{
+            notes: {
               type: "string",
               example: "XXX XXX XXX"
             },
-            createdAt:{
+            createdAt: {
               type: "string",
               example: "2024-06-07T06:29:23.473Z"
             },
-            updatedAt:{
+            updatedAt: {
               type: "string",
               example: "2024-06-07T06:29:23.473Z"
             }
           }
-        }
+        },
+        deliverynote: {
+          type: "object",
+          required: ["clientId", "projectId", "description"],
+          properties: {
+            description: {
+              type: "string",
+              example: "This is a description for a delivery note"
+            },
+            projectId: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            clientId: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            workdate: {
+              type: "string",
+              example: "2025-07-17"
+            },
+            format: {
+              type: "string",
+              example: "hours or material"
+            },
+            materials: {
+              type: "array",
+              example: "['paper', 'cement', 'stone']"
+            },
+            hours: {
+              type: "array",
+              example: "['4', '5', '6']"
+            }
+          }
+        },
+        deliverynoteAllData: {
+          type: "object",
+          required: ["clientId", "projectId", "description"],
+          properties: {
+            _id: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            description: {
+              type: "string",
+              example: "This is a description for a delivery note"
+            },
+            projectId: {
+              $ref: "#/components/schemas/allProjectData"
 
+            },
+            userId: {
+              $ref: "#/components/schemas/userAllData"
+            },
+            clientId: {
+              $ref: "#/components/schemas/allClientData"
+
+            },
+            pdf: {
+              type: "string",
+              example: "https://gateway.pinata.cloud/ipfs/QmcQiVc3ayi9aZFmEiFEwp3gvi1fyoYugdvE1iEsbnvtPy"
+            },
+            sign: {
+              type: "string",
+              example: "https://maroon-quick-catfish-709.mypinata.cloud/ipfs/QmXXx8xDeTvKTyGxzp57cBgkhKp3VAYKyDWyrsAgPpiddb"
+            },
+            workdate: {
+              type: "string",
+              example: "2025-07-17"
+            },
+            format: {
+              type: "string",
+              example: "hours or material"
+            },
+            pending: {
+              type: "bool",
+              example: "false"
+            },
+            materials: {
+              type: "array",
+              example: "['paper', 'cement', 'stone']"
+            },
+            hours: {
+              type: "array",
+              example: "['4', '5', '6']"
+            },
+            createdAt: {
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            },
+            updatedAt: {
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            }
+          },
+
+        },
       },
-    },
+    }
   },
   apis: ["./routes/*.js"],
 };

@@ -34,3 +34,20 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRi
 ###
 GET http://localhost:3006/api/deliverynote/pdf/67f7e56b393b68a750bbba00
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDI5ODAwNCwiZXhwIjoxNzQ0MzA1MjA0fQ.1-Mnxus3owN85-ny-9BgSM-NuXIRJYMCwxiOvdEQmwQ
+
+###
+
+PATCH http://localhost:3006/api/deliverynote/sign/67f7e56b393b68a750bbba00
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDI5ODAwNCwiZXhwIjoxNzQ0MzA1MjA0fQ.1-Mnxus3owN85-ny-9BgSM-NuXIRJYMCwxiOvdEQmwQ
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="firma.png"
+Content-Type: image/png
+
+< ./firma.png
+--boundary123--
+
+###
+DELETE http://localhost:3006/api/deliverynote/67f7e56b393b68a750bbba00
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U3YmQzY2NhMjRiYTg2NDdhZjIyN2QiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0NDI5ODAwNCwiZXhwIjoxNzQ0MzA1MjA0fQ.1-Mnxus3owN85-ny-9BgSM-NuXIRJYMCwxiOvdEQmwQ
