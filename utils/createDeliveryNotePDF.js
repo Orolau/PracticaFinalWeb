@@ -19,9 +19,7 @@ const getDeliverynotePdf = async (req, res) => {
       .populate('clientId')
       .populate('projectId');
 
-    if (!deliverynote) {
-      return handleHttpError(res, 'Delivery note not found', 404);
-    }
+    
     const storagePath = path.join(__dirname, '../storage');
 
     // Crear carpeta si no existe
@@ -146,7 +144,7 @@ const getDeliverynotePdf = async (req, res) => {
       { pdf: ipfsURL },
       { new: true }
     );
-
+    
   } catch (err) {
     console.error(err);
     handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500);

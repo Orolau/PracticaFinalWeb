@@ -3,6 +3,7 @@ const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError.js");
 const { getDeliverynotePdf } = require('../utils/createDeliveryNotePDF.js');
 const descargarPDFDesdeIPFS = require('../utils/descargarPDFdeIPFS.js');
+const { uploadToPinata } = require('../utils/handleUploadIPFS.js');
 
 
 
@@ -79,9 +80,28 @@ const getDeliverynotePDF = async (req, res) =>{
         await descargarPDFDesdeIPFS(req, res)
 
     }catch(err){
-        console.log(err)
         handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
     }
 }
 
-module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById, getDeliverynotePDF}
+const signDeliveryNote = async (req, res) =>{
+    try{
+            const { id } = req.params;
+    
+            const fileBuffer = req.file.buffer;
+            const fileName = req.file.originalname;
+            const pinataResponse = await uploadToPinata(fileBuffer, fileName);
+            const ipfsFile = pinataResponse.IpfsHash;
+            const ipfs = `https://${process.env.PINATA_GATEWAY}/ipfs/${ipfsFile}`;
+    
+            const deliverynote = await deliverynoteModel.findOneAndUpdate({_id: id}, {sign:ipfs}, { new: true})
+            await getDeliverynotePdf(req, res)
+            
+            res.send(req.deliverynote)
+        }catch(err){
+            console.log(err)
+            handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+        }
+}
+
+module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById, getDeliverynotePDF, signDeliveryNote}
