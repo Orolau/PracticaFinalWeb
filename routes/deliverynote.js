@@ -29,7 +29,7 @@ const { validateIdParam } = require("../validators/client.js");
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: "#/components/schemas/deliverynote"
+ *                          $ref: "#/components/schemas/deliverynoteAllFields"
  *          '401':
  *              description: Unauthorized. The provided code is incorrect.
  *          '422':
@@ -63,7 +63,7 @@ router.post('/', authMiddleware, validatorCreateDeliveryNote, createDeliverynote
  *                      schema:
  *                          type: array
  *                          items:
- *                              $ref: "#/components/schemas/deliverynoteAllData"
+ *                              $ref: "#/components/schemas/deliverynoteAllFields"
  *          '401':
  *              description: Unauthorized. The provided code is incorrect.
  *          '500':
@@ -179,7 +179,7 @@ router.get('/pdf/:id', authMiddleware, validateIdParam, checkDeliverynoteOwnersh
  *              content:
  *                  application/json:
  *                      schema:
- *                          $ref: "#/components/schemas/deliverynoteAllData"
+ *                          $ref: "#/components/schemas/deliverynoteAllFields"
  *          '401':
  *              description: Unauthorized. The provided code is incorrect.
  *          '403':

@@ -744,6 +744,70 @@ const options = {
           },
 
         },
+        deliverynoteAllFields: {
+          type: "object",
+          required: ["clientId", "projectId", "description"],
+          properties: {
+            _id: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            description: {
+              type: "string",
+              example: "This is a description for a delivery note"
+            },
+            projectId: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            userId: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+            },
+            clientId: {
+              type: "string",
+              example: "6662a8c3c199795c88329e4e"
+
+            },
+            pdf: {
+              type: "string",
+              example: "https://gateway.pinata.cloud/ipfs/QmcQiVc3ayi9aZFmEiFEwp3gvi1fyoYugdvE1iEsbnvtPy"
+            },
+            sign: {
+              type: "string",
+              example: "https://maroon-quick-catfish-709.mypinata.cloud/ipfs/QmXXx8xDeTvKTyGxzp57cBgkhKp3VAYKyDWyrsAgPpiddb"
+            },
+            workdate: {
+              type: "string",
+              example: "2025-07-17"
+            },
+            format: {
+              type: "string",
+              example: "hours or material"
+            },
+            pending: {
+              type: "bool",
+              example: "false"
+            },
+            materials: {
+              type: "array",
+              example: "['paper', 'cement', 'stone']"
+            },
+            hours: {
+              type: "array",
+              example: "['4', '5', '6']"
+            },
+            createdAt: {
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            },
+            updatedAt: {
+              type: "string",
+              example: "2024-06-07T06:29:23.473Z"
+            }
+          },
+
+        },
       },
     }
   },
