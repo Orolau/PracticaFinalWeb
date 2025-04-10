@@ -1,6 +1,12 @@
 const { clientModel, userModel, projectModel, deliverynoteModel } = require('../models/index.js');
 const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError.js");
+const { getDeliverynotePdf } = require('../utils/createDeliveryNotePDF.js');
+const descargarPDFDesdeIPFS = require('../utils/descargarPDFdeIPFS.js');
+const path = require('path');
+const util = require('util');
+const fs = require('fs');
+
 
 const createDeliverynote = async (req, res) => {
     try {
@@ -24,6 +30,7 @@ const createDeliverynote = async (req, res) => {
         res.send(deliverynote)
 
     } catch (err) {
+        console.log(err)
         handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
     }
 }
@@ -67,4 +74,16 @@ const getDeliverynoteById = async (req, res) =>{
     }
 }
 
-module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById}
+const getDeliverynotePDF = async (req, res) =>{
+    try{
+        if(!req.deliverynote.pdf)
+            await getDeliverynotePdf(req, res)
+        await descargarPDFDesdeIPFS(req, res)
+
+    }catch(err){
+        console.log(err)
+        handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)
+    }
+}
+
+module.exports = {createDeliverynote, getDeliverynotes, getDeliverynoteById, getDeliverynotePDF}

@@ -93,7 +93,7 @@ describe("Auth & User Endpoints", () => {
   });
 
 //   test('Validate recovery code', async () => {
-//     const res = await request(app).post('/auth/validate-code').send({
+//     const res = await request(app).post('/auth/validate').send({
 //       email: 'testuser@example.com',
 //       code: '123456'
 //     });

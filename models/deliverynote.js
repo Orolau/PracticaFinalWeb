@@ -20,7 +20,7 @@ const DeliverynoteScheme = new mongoose.Schema(
     },
     format: {
       type: String,
-      enum: ["hours", "people"],
+      enum: ["hours", "material"],
       default: "hours",
     },
     hours: {
