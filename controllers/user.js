@@ -260,7 +260,8 @@ const recoverToken = async (req, res) =>{
         req = matchedData(req)
         const code = Math.floor(100000 + Math.random() *900000).toString()
         const user = await userModel.findOneAndUpdate({email: req.email}, {code: code}, { new: true})
-        
+        if (!user)
+            return handleHttpError(res, "USER_NOT_EXIST", 404)
         const mailOptions = {
             from: process.env.EMAIL,
             to: req.email,
