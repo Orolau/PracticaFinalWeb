@@ -292,66 +292,14 @@ const options = {
               example: "2025-04-02T15:27:01.075+00:00"
             },
             address: {
-              type: "object",
-              properties: {
-                street: {
-                  type: "string",
-                  example: "Las Rozas"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "12345"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                },
-              }
+              $ref: "#/components/schemas/userAddress"
             },
             url: {
               type: "string",
               example: "https://maroon-quick-catfish-709.mypinata.cloud/ipfs/QmcNWtD43kfVJ3Eu1…"
             },
             company: {
-              type: "object",
-              properties: {
-                cif: {
-                  type: "string",
-                  example: "741342963L"
-                },
-                name: {
-                  type: "string",
-                  example: "u-tad"
-                },
-                street: {
-                  type: "string",
-                  example: "Gran Vía"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "111111"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                }
-              }
+              $ref: "#/components/schemas/userCompany"
             }
           }
         },
@@ -441,29 +389,7 @@ const options = {
               example: "123456789L"
             },
             address: {
-              type: "object",
-              properties: {
-                street: {
-                  type: "string",
-                  example: "Las Rozas"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "12345"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                },
-              }
+              $ref: "#/components/schemas/userAddress"
             }
           }
         },
@@ -480,29 +406,7 @@ const options = {
               example: "123456789L"
             },
             address: {
-              type: "object",
-              properties: {
-                street: {
-                  type: "string",
-                  example: "Las Rozas"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "12345"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                },
-              }
+              $ref: "#/components/schemas/userAddress"
             },
             _id: {
               type: "string",
@@ -543,29 +447,8 @@ const options = {
               example: "0001"
             },
             address: {
-              type: "object",
-              properties: {
-                street: {
-                  type: "string",
-                  example: "Las Rozas"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "12345"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                },
-              }
+              
+              $ref: "#/components/schemas/userAddress"
             },
             clientId: {
               type: "string",
@@ -590,29 +473,7 @@ const options = {
               example: "0001"
             },
             address: {
-              type: "object",
-              properties: {
-                street: {
-                  type: "string",
-                  example: "Las Rozas"
-                },
-                province: {
-                  type: "string",
-                  example: "Madrid"
-                },
-                number: {
-                  type: "integer",
-                  example: 3
-                },
-                postal: {
-                  type: "string",
-                  example: "12345"
-                },
-                city: {
-                  type: "string",
-                  example: "Madrid"
-                },
-              }
+              $ref: "#/components/schemas/userAddress"
             },
             _id: {
               type: "string",
