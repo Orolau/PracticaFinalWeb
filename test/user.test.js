@@ -4,9 +4,7 @@ const mongoose = require('mongoose');
 const { encrypt } = require('../utils/handlePassword.js')
 const { tokenSign } = require('../utils/handleJwt.js');
 const { userModel } = require('../models/index.js')
-const { uploadToPinata } = require("../utils/handleUploadIPFS.js");
-const path = require("path");
-const mongooseDelete = require("mongoose-delete")
+const { Readable } = require("stream");
 
 const initialUsesrs = [
   {
@@ -53,6 +51,13 @@ beforeAll(async () => {
 
   token2 = tokenSign(userData2, process.env.JWT_SECRET)
 }, 7000);
+
+const bufferToStream = (buffer) => {
+  const stream = new Readable();
+  stream.push(buffer);
+  stream.push(null);
+  return stream;
+};
 
 describe("User Registration", () => {
   test("Should register a new user", async () => {
@@ -335,20 +340,22 @@ describe("Get data, recovey and change password", () => {
 });
 
 
-/*describe("Upload images to ipfs", () => {
-jest.mock('../utils/handleUploadIPFS.js', () => ({
-  uploadToPinata: jest.fn(() => Promise.resolve("https://ipfs.mocked/link"))
-}));  
+describe("Upload images to ipfs", () => {
+
 test('Upload profile logo', async () => {
+  const fakeFileBuffer = Buffer.from("firma-png");
   const res = await request(app)
     .patch('/api/user/logo')
     .set("Authorization", `Bearer ${token}`)
-    .attach("image", path.join(__dirname, "test", "test-image.png")); 
+    .attach("image", bufferToStream(fakeFileBuffer), {
+      filename: "test-image.png",
+      contentType: "image/png"
+    });
 
   expect(res.statusCode).toBe(200);
-  expect(res.body).toHaveProperty("logo", expect.stringContaining("https://ipfs.mocked"));
+  expect(res.body).toHaveProperty("url");
 });
-})*/
+})
 
 describe("Soft and hard delete users", () => {
   test("The user must be set deleted=true in the database", async () => {
