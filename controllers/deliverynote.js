@@ -73,9 +73,18 @@ const getDeliverynoteById = async (req, res) =>{
 
 const getDeliverynotePDF = async (req, res) =>{
     try{
-        if(!req.deliverynote.pdf)
-            await getDeliverynotePdf(req, res)
-        await descargarPDFDesdeIPFS(req, res)
+        // if(!req.deliverynote.pdf)
+        //     await getDeliverynotePdf(req, res)
+        // await descargarPDFDesdeIPFS(req, res)
+
+        if (!req.deliverynote.pdf) {
+            await getDeliverynotePdf(req, res);
+            if (!req.deliverynote?.pdf) return; 
+          }
+          await descargarPDFDesdeIPFS(req, res);
+          // Agregá un return aquí si sigue el flujo
+          return;
+          
 
     }catch(err){
         handleHttpError(res, 'INTERNAL_SERVER_ERROR', 500)

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const { clientModel, userModel, projectModel, deliverynoteModel } = require('../models/index.js')
 const { encrypt } = require('../utils/handlePassword.js')
 const { tokenSign } = require('../utils/handleJwt.js');
+const { Readable } = require("stream");
 
 const initialUsesrs = [
     {
@@ -59,17 +60,6 @@ const initialClients = [
             "postal": 36004,
             "city": "Pontevedra"
         }
-    },
-    {
-        name: "Client Test 2",
-        cif: "987654321N",
-        address: {
-            "street": "Calle Fuencarral",
-            "province": "Pontevedra",
-            "number": 10,
-            "postal": 36004,
-            "city": "Pontevedra"
-        }
     }
 
 ];
@@ -85,19 +75,23 @@ const initialProjects = [
             "postal": 36004,
             "city": "Pontevedra"
         }
-    },
-    {
-        name: "Proyecto de Prueba 2",
-        projectCode: "TEST002",
-        code: "001",
-        address: {
-            "street": "Calle Fuencarral",
-            "province": "Pontevedra",
-            "number": 10,
-            "postal": 36004,
-            "city": "Pontevedra"
-        }
     }
+]
+const initialDeliveryNote = [
+  {
+    format: "material",
+    materials: "stone - 5Kg",
+    description: "This is a example of a material delivery note",
+    workerDate: "02-03-2026",
+
+  },
+  {
+    format: "hours",
+    materials: "1 worker - 5h",
+    description: "This is a example of a hours delivery note",
+    workerDate: "02-03-2026",
+
+  }
 ]
 
 
@@ -105,11 +99,10 @@ let token
 let token2
 let tokenGuest
 let userId
-let userId2
 let clientId
-let clientId2
 let projectId
-let projectId2
+let deliverynoteId
+let deliverynoteId2
 beforeAll(async () => {
     await new Promise((resolve) => mongoose.connection.once('connected', resolve));
     await userModel.deleteMany({})
@@ -137,7 +130,6 @@ beforeAll(async () => {
     body2.status = 1
     const userData2 = await userModel.create(body2)
     userData2.set("password", undefined, { strict: false })
-    userId2 = userData2._id
     token2 = tokenSign(userData2, process.env.JWT_SECRET)
 
     const client1Body = initialClients[0]
@@ -145,22 +137,25 @@ beforeAll(async () => {
     const clientData1 = await clientModel.create(client1Body)
     clientId = clientData1._id
 
-    const client2Body = initialClients[1]
-    client2Body.userId = userId
-    const clientData2 = await clientModel.create(client2Body)
-    clientId2 = clientData2._id
-
     const projectBody1 = initialProjects[0]
     projectBody1.clientId = clientId
     projectBody1.userId = userId
     const projectData1 = await projectModel.create(projectBody1)
     projectId = projectData1._id
 
-    const projectBody2 = initialProjects[1]
-    projectBody2.clientId = clientId
-    projectBody2.userId = userId
-    const projectData2 = await projectModel.create(projectBody2)
-    projectId2 = projectData2._id
+    const deliveryNoteBody = initialDeliveryNote[0]
+    deliveryNoteBody.clientId = clientId
+    deliveryNoteBody.userId = userId
+    deliveryNoteBody.projectId = projectId
+    const deliverynoteData = await deliverynoteModel.create(deliveryNoteBody)
+    deliverynoteId = deliverynoteData._id
+
+    const deliveryNoteBody2 = initialDeliveryNote[1]
+    deliveryNoteBody2.clientId = clientId
+    deliveryNoteBody2.userId = userId
+    deliveryNoteBody2.projectId = projectId
+    const deliverynoteData2 = await deliverynoteModel.create(deliveryNoteBody2)
+    deliverynoteId2 = deliverynoteData2._id
 
 }, 7000);
 describe("DeliveryNote API", () => {
@@ -223,7 +218,7 @@ describe("DeliveryNote API", () => {
             clientId,
             projectId,
             materials: "Cemento - 10kg",
-            date: "2025-04-11",
+            workdate: "2025-04-11",
           description: "Desc"
           });
     
@@ -239,6 +234,85 @@ describe("DeliveryNote API", () => {
         expect(res.statusCode).toBe(422);
       });
 });
+
+const bufferToStream = (buffer) => {
+  const stream = new Readable();
+  stream.push(buffer);
+  stream.push(null);
+  return stream;
+};
+
+
+describe("PDF DeliveryNotes", () => {
+  test("generate and download a delivery note pdf", async () => {
+    const res = await request(app)
+      .get(`/api/deliverynote/pdf/${deliverynoteId}`)
+      .set("Authorization", `Bearer ${token}`)
+
+    expect(res.statusCode).toBe(200);
+    expect(res.headers["content-type"]).toBe("application/pdf");
+  });
+    
+  
+  test("Should sign (upload de image to ipfs) and generate a pdf", async () => {
+    const fakeFileBuffer = Buffer.from("firma-png");
+  
+    const res = await request(app)
+      .patch(`/api/deliverynote/sign/${deliverynoteId}`)
+      .set("Authorization", `Bearer ${token}`)
+      .attach("image", bufferToStream(fakeFileBuffer), {
+        filename: "test-image.png",
+        contentType: "image/png"
+      });
+  
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty("pdf");
+    expect(res.body).toHaveProperty("sign");
+  });
+  test("Error trying to upload the sign without providing a existing delivery note id", async () => {
+    const fakeFileBuffer = Buffer.from("firma-png");
+    const fakeId = "aaaaaaaaaaaaaaaaaaaaaaaa"
+  
+    const res = await request(app)
+      .patch(`/api/deliverynote/sign/${fakeId}`)
+      .set("Authorization", `Bearer ${token}`)
+      .attach("image", bufferToStream(fakeFileBuffer), {
+        filename: "test-image.png",
+        contentType: "image/png"
+      });
+  
+    expect(res.statusCode).toBe(404);
+  });
+  test("Error trying to upload the sign without providing a valid id", async () => {
+    const fakeFileBuffer = Buffer.from("firma-png");
+    const fakeId = "aaaaaaaaaaaa aaaaaaaaaaa"
+  
+    const res = await request(app)
+      .patch(`/api/deliverynote/sign/${fakeId}`)
+      .set("Authorization", `Bearer ${token}`)
+      .attach("image", bufferToStream(fakeFileBuffer), {
+        filename: "test-image.png",
+        contentType: "image/png"
+      });
+  
+    expect(res.statusCode).toBe(422);
+  });
+  test("Error trying to upload the sign to another user's delivery note", async () => {
+    const fakeFileBuffer = Buffer.from("firma-png");
+  
+    const res = await request(app)
+      .patch(`/api/deliverynote/sign/${deliverynoteId}`)
+      .set("Authorization", `Bearer ${token2}`)
+      .attach("image", bufferToStream(fakeFileBuffer), {
+        filename: "test-image.png",
+        contentType: "image/png"
+      });
+  
+    expect(res.statusCode).toBe(403);
+  });
+
+})
+
 describe("Getting DeliveryNotes", () => {
   
     test("Should get all deliverynotes for user", async () => {
@@ -260,18 +334,17 @@ describe("Getting DeliveryNotes", () => {
     });
   
     test("Should get a deliverynote by ID", async () => {
-      const note = await deliverynoteModel.findOne({ userId });
       const res = await request(app)
-        .get(`/api/deliverynote/${note._id}`)
+        .get(`/api/deliverynote/${deliverynoteId}`)
         .set("Authorization", `Bearer ${token}`);
   
       expect(res.statusCode).toBe(200);
       expect(res.body).toHaveProperty("_id");
     });
     test("Should get another company member's deliverynote by ID", async () => {
-        const note = await deliverynoteModel.findOne({ userId });
+        
         const res = await request(app)
-          .get(`/api/deliverynote/${note._id}`)
+          .get(`/api/deliverynote/${deliverynoteId}`)
           .set("Authorization", `Bearer ${tokenGuest}`);
     
         expect(res.statusCode).toBe(200);
@@ -286,14 +359,13 @@ describe("Getting DeliveryNotes", () => {
     });
 
     test("Error trying to get another user's deliverynote by ID", async () => {
-        const note = await deliverynoteModel.findOne({ userId });
         const res = await request(app)
-          .get(`/api/deliverynote/${note._id}`)
+          .get(`/api/deliverynote/${deliverynoteId}`)
           .set("Authorization", `Bearer ${token2}`);
     
         expect(res.statusCode).toBe(403)
     });
-    test("Error trying to get another user's deliverynote", async () => {
+    test("Error trying to get a non-existing deliverynote", async () => {
         const faketId = "aaaaaaaaaaaaaaaaaaaaaaaa"
         const res = await request(app)
           .get(`/api/deliverynote/${faketId}`)
@@ -301,7 +373,7 @@ describe("Getting DeliveryNotes", () => {
     
         expect(res.statusCode).toBe(404)
     });
-    test("Error trying to get a non-existing deliverynote", async () => {
+    test("Error trying to get a deliverynote providing a invalid id", async () => {
         const faketId = "aaaaaaaaaaa aaaaaaaaaaaa"
         const res = await request(app)
           .get(`/api/deliverynote/${faketId}`)
@@ -311,6 +383,48 @@ describe("Getting DeliveryNotes", () => {
     });
   
 });
+
+describe("Getting DeliveryNotes", () => {
+  test("Error trying to delete a delivery note providing a invalid id", async () => {
+    const faketId = "aaaaaaaaaaa aaaaaaaaaaaa"
+    const res = await request(app)
+      .delete(`/api/deliverynote/${faketId}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(422)
+});
+  test("Error trying to delete a non-existing delivery note", async () => {
+    const faketId = "aaaaaaaaaaaaaaaaaaaaaaaa"
+    const res = await request(app)
+      .delete(`/api/deliverynote/${faketId}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(404)
+});
+  test("Error trying to delete a signed delivery note", async () => {
+    const res = await request(app)
+      .delete(`/api/deliverynote/${deliverynoteId}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(405);
+  });
+  test("Error trying to delete another user's delivery note", async () => {
+    const res = await request(app)
+      .delete(`/api/deliverynote/${deliverynoteId2}`)
+      .set("Authorization", `Bearer ${token2}`);
+
+    expect(res.statusCode).toBe(403);
+  });
+  test("Should delete a non-signed delivery note", async () => {
+    const res = await request(app)
+      .delete(`/api/deliverynote/${deliverynoteId2}`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toBe('Delivery note deleted successfully')
+  });
+})
+
   
 afterAll(async () => {
     server.close();
